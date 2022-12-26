@@ -30,11 +30,8 @@ const Dashboard2 = () => {
             } sidebar-container `}
           >
             <div className="px-8 ">
-              <div className="flex   bg-white my-8 rounded-2xl px-1 gap-1 border-green-300 border-2 py-2 border- shadow-sm">
-                <div className=" w-12 ">
-                  {/* <img src={logo} alt="" /> */}
-                </div>
-                <div className="mt-5 font-bold ">DASHBOARD</div>
+              <div className="flex justify-center  bg-white my-8 rounded-2xl  border-green-300 border-2  ">
+                <div className="py-3 px-2 font-bold ">DASHBOARD</div>
               </div>
               <ul className="mt-12">
                 <li className="flex w-full justify-between text-black  cursor-pointer items-center mb-6 hover:shadow-xl hover:border-t-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 hover:border-green-200">
@@ -80,18 +77,8 @@ const Dashboard2 = () => {
                     <span className="text-sm font-bold ml-2"> EXTRA</span>
                   </div>
                 </li>
-                <li className="flex w-full justify-between text-black  cursor-pointer items-center mb-6 hover:shadow-xl hover:border-t-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 hover:border-green-200">
-                  <div className="flex items-center p-2">
-                    <FaBook />
-                    <span className="text-sm font-bold ml-2">INSURENCE</span>
-                  </div>
-                </li>
-                <li className="flex w-full justify-between text-black  cursor-pointer items-center mb-6 hover:shadow-xl hover:border-t-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 hover:border-green-200">
-                  <div className="flex items-center text-2xl p-2  rounded-xl ">
-                    <FaHome></FaHome>
-                    <span className="text-sm font-bold ml-2">EXTRA?</span>
-                  </div>
-                </li>
+               
+               
               </ul>
               <div className="flex justify-center mt-48 mb-4 w-full">
                 <div className="relative ">
@@ -157,35 +144,6 @@ const Dashboard2 = () => {
           {/* Remove class [ h-64 ] when adding a card block */}
           <div className="container mx-auto py-10 h-96 md:w-4/5 w-11/12 px-6">
             {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
-
-            <div className="container mx-auto hidden lg:block ">
-              <div className="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
-                <div className="w-full px-4 py-5 bg-white rounded-lg shadow-lg  border-x-8 border-green-200   transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300   ">
-                  <div className="text-sm font-medium text-gray-500 truncate    ">
-                    Total users
-                  </div>
-                  <div className="mt-1 text-3xl font-semibold text-gray-900">
-                    12,00
-                  </div>
-                </div>
-                <div className="w-full px-4 py-5 bg-white rounded-lg  shadow-lg  border-x-8 border-green-200   transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ">
-                  <div className="text-sm font-medium text-gray-500 truncate">
-                    Total Profit
-                  </div>
-                  <div className="mt-1 text-3xl font-semibold text-gray-900">
-                    $ 450k
-                  </div>
-                </div>
-                <div className="w-full px-4 py-5 bg-white rounded-lg shadow-lg  border-x-8 border-green-200   transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300 ">
-                  <div className="text-sm font-medium text-gray-500 truncate">
-                    Total Orders
-                  </div>
-                  <div className="mt-1 text-3xl font-semibold text-gray-900">
-                    20k
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div
               className="absolute md:hidden block  left-24 top-12 w-10 h-10 bg-glass rounded-full cursor-pointer"

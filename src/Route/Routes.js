@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllAdmin from "../Dashboard/AllAdmin/AllAdmin";
 import AllUser from "../Dashboard/AllUser/AllUser";
+import Dashboard2 from "../Dashboard2";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
 import DashboardLayout from "../Layout/DashboardLayout";
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <DashboardLayout></DashboardLayout>
+        {/* <Dashboard2></Dashboard2> */}
       </PrivateRoute>
     ),
     children: [

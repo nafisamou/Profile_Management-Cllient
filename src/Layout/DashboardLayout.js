@@ -6,15 +6,11 @@ import Navbar from "../Home/Navbar";
 import useAdmin from "../hook/useAdmin/useAdmin";
 import useUser from "../hook/useUser/useUser";
 
-
-
-
-
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
-//   const [isAdmin] = useAdmin(user?.email);
-//   const [isUser] = useUser(user?.email);
- 
+  //   const [isAdmin] = useAdmin(user?.email);
+    // const [isUser] = useUser(user?.email);
+
   return (
     <div className="">
       <Navbar></Navbar>
@@ -30,26 +26,23 @@ const DashboardLayout = () => {
         <div className="drawer-side   text-black">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-           
             {/* {isUser && ( */}
-              <>
-                <li>
-                  <Link to="/dashboard/allUser">All User</Link>
-                </li>
-              </>
+            <>
+              <li>
+                <Link to="/dashboard/allUser">All User</Link>
+              </li>
+            </>
             {/* )} */}
-            
+
             {/* {isAdmin && ( */}
-              <>
-                <li>
-                  <Link to="/dashboard/allUser">All User</Link>
-                </li>
-                <li>
-                  <Link to="/dashboard/allAdmin">All Admin</Link>
-                </li>
-               
-              
-              </>
+            <>
+              <li>
+                <Link to="/dashboard/allUser">All User</Link>
+              </li>
+              <li>
+                <Link to="/dashboard/allAdmin">All Admin</Link>
+              </li>
+            </>
             {/* )} */}
           </ul>
         </div>

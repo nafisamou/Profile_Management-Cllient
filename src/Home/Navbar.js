@@ -71,7 +71,7 @@ const Navbar = () => {
 
             <Link
               title="Logout"
-              className="font-medium text-xl hover:bg-white hover:text-blue-700 "
+              className="font-medium text-xl  hover:text-blue-700 "
               onClick={handleLogout}
             >
               Log Out

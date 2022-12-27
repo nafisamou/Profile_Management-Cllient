@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import AllAdmin from "../Dashboard/AllAdmin/AllAdmin";
 import AllUser from "../Dashboard/AllUser/AllUser";
-import Dashboard2 from "../Dashboard2";
+import EditDetails from "../Dashboard/EditDetails/EditDetails";
+import OnlyUser from "../Dashboard/OnlyUser/OnlyUser";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Login from "../Register/Login";
 import SignUp from "../Register/SignUp";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -18,6 +20,12 @@ const router = createBrowserRouter([
       { path: "/", element: <Home></Home> },
       { path: "/login", element: <Login></Login> },
       { path: "/signup", element: <SignUp></SignUp> },
+      {
+        path: "/edit/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/edit/${params.id}`),
+        element: <EditDetails></EditDetails>,
+      },
     ],
   },
   {
@@ -32,10 +40,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/allUser",
-        element: <AllUser></AllUser>,
+        element:
+        <AdminRoute> <AllUser></AllUser></AdminRoute>,
       },
 
-      { path: "/dashboard/allAdmin", element: <AllAdmin></AllAdmin> },
+      { path: "/dashboard/allAdmin", element: <AdminRoute><AllAdmin></AllAdmin></AdminRoute> },
+      { path: "/dashboard/onlyUser", element: <OnlyUser></OnlyUser>},
+     
     ],
   },
 ]);

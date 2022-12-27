@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-const AllAdmin = () => {
+const OnlyUser = () => {
     const [user, setUser] = useState([]);
     const { data: users = [], refetch } = useQuery({
       queryKey: ["users"],
@@ -13,22 +13,7 @@ const AllAdmin = () => {
       },
     });
   
-    const handleMakeAdmin = (id) => {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
-        method: "PUT",
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem("token")}`,
-        // },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          if (data.modifiedCount) {
-            toast.success("Make Admin Successfully");
-            refetch();
-          }
-        });
-    };
+   
   
     // Deleting:
     const handleDeleteUser = (id) => {
@@ -52,7 +37,7 @@ const AllAdmin = () => {
     };
     return (
         <div>
-        <h2 className="text-3xl text-center my-6 font-sans">All Users</h2>
+        <h2 className="text-3xl text-center my-6 font-sans">Only Users</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -60,10 +45,10 @@ const AllAdmin = () => {
                 <th></th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>createdTime</th>
-                <th>updatedTime</th>
+                <th>Created Time</th>
+                <th>Updated Time</th>
                 <th>Email</th>
-                <th>Admin</th>
+              
                 <th>Delete</th>
               </tr>
             </thead>
@@ -77,20 +62,7 @@ const AllAdmin = () => {
                   <td>{user.updatedTime}</td>
                   <td>{user.email}</td>
   
-                  <td>
-                    <>
-                      {user?.role !== "admin" ? (
-                        <button
-                          onClick={() => handleMakeAdmin(user._id)}
-                          className="btn btn-xs btn-success "
-                        >
-                          Make Admin
-                        </button>
-                      ) : (
-                        <p className="bg-green-700 btn btn-xs">Admin</p>
-                      )}
-                    </>
-                  </td>
+              
                   <td>
                     <button
                       onClick={() => handleDeleteUser(user._id)}
@@ -108,4 +80,4 @@ const AllAdmin = () => {
     );
 };
 
-export default AllAdmin;
+export default OnlyUser;

@@ -3,9 +3,7 @@ import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 
-
 const EditDetails = () => {
-
   const navigate = useNavigate();
   const router = useParams();
   const { id } = router;
@@ -13,7 +11,6 @@ const EditDetails = () => {
   console.log(updates);
   const { user } = useContext(AuthContext);
 
- 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,19 +19,17 @@ const EditDetails = () => {
     const createdTime = form.createdTime.value;
     const updatedTime = form.updatedTime.value;
     const email = form.email.value;
-    
 
     const data = {
-     
       email,
       firstName,
       lastName,
       createdTime,
-      updatedTime
+      updatedTime,
     };
     console.log(data);
 
-    fetch(`http://localhost:5000/edit/${id}`, {
+    fetch(`https://task-3-wine.vercel.app/edit/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -73,7 +68,6 @@ const EditDetails = () => {
             placeholder="Last Name"
             defaultValue={updates?.lastName}
             className="w-full rounded-md focus:ring border focus:ring-violet-400 border-gray-700 p-5"
-            
           />
         </div>
         <div>
@@ -106,7 +100,6 @@ const EditDetails = () => {
             readOnly
           />
         </div>
-     
 
         <button
           type="submit"

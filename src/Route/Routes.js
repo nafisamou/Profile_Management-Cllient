@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/edit/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/edit/${params.id}`),
+          fetch(`https://task-3-wine.vercel.app/edit/${params.id}`),
         element: <EditDetails></EditDetails>,
       },
     ],
@@ -40,13 +40,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/allUser",
-        element:
-        <AdminRoute> <AllUser></AllUser></AdminRoute>,
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllUser></AllUser>
+          </AdminRoute>
+        ),
       },
 
-      { path: "/dashboard/allAdmin", element: <AdminRoute><AllAdmin></AllAdmin></AdminRoute> },
-      { path: "/dashboard/onlyUser", element: <OnlyUser></OnlyUser>},
-     
+      {
+        path: "/dashboard/allAdmin",
+        element: (
+          <AdminRoute>
+            <AllAdmin></AllAdmin>
+          </AdminRoute>
+        ),
+      },
+      { path: "/dashboard/onlyUser", element: <OnlyUser></OnlyUser> },
     ],
   },
 ]);

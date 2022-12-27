@@ -3,26 +3,37 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
-
-// import useToken from "../../hook/useToken/useToken";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import useToken from "../hook/useToken/useToken";
 
 const SignUp = () => {
+  const formSchema = Yup.object().shape({
+    password: Yup.string()
+      .required("Password is mendatory")
+      .min(3, "Password must be at 3 char long"),
+    confirmPwd: Yup.string()
+      .required("Password is mendatory")
+      .oneOf([Yup.ref("password")], "Passwords does not match"),
+  });
+  const formOptions = { resolver: yupResolver(formSchema) };
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm(formOptions);
+
   const { createUser, updateUserProfile, signInWithGoogle } =
     useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
   const [createdUserEmail, setCreatedUser] = useState("");
-  //   const [token] = useToken(createdUserEmail);
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  //   if (token) {
-  //     navigate("/");
-  //   }
+  // if (token) {
+  //   navigate("/");
+  // }
   const handleSignUp = (data) => {
     console.log(data);
     setSignUPError("");
@@ -79,7 +90,7 @@ const SignUp = () => {
         updatedTime,
       };
       console.log(user);
-      fetch("http://localhost:5000/users", {
+      fetch("https://task-3-wine.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -90,14 +101,14 @@ const SignUp = () => {
         .then((data) => {
           console.log("save user", data);
           setCreatedUser(email);
-          // // getUserToken(email);
-          // navigate("/");
+          getUserToken(email);
+          navigate("/");
         });
     };
   };
 
-  /*  const getUserToken = (email) => {
-    fetch(`https://e-commerce-server-gamma.vercel.app/jwt?email=${email}`)
+  const getUserToken = (email) => {
+    fetch(`https://task-3-wine.vercel.app/jwt?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.token) {
@@ -105,7 +116,7 @@ const SignUp = () => {
           navigate("/");
         }
       });
-  }; */
+  };
 
   // Google SignIn
   const handleGoogleSignIn = (data) => {
@@ -259,7 +270,7 @@ const SignUp = () => {
             </label>
             <input
               type="password"
-              {...register("confirmPassword", {
+              {...register("confirmPwd", {
                 required: "confirm password is required",
                 minLength: {
                   value: 6,
@@ -273,8 +284,8 @@ const SignUp = () => {
               })}
               className="input input-bordered w-full max-w-xs"
             />
-            {errors.confirmPassword && (
-              <p className="text-red-500">{errors.confirmPassword.message}</p>
+            {errors.confirmPwd && (
+              <p className="text-red-500">{errors.confirmPwd.message}</p>
             )}
           </div>
 

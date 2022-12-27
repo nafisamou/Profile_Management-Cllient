@@ -6,7 +6,7 @@ const useUser = (email) => {
   const [isUserLoading, setIsUserLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:5000/users/User/${email}`)
+      fetch(`https://task-3-wine.vercel.app/users/user/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

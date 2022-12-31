@@ -1,5 +1,7 @@
 # Client-side Repository:
 
+# Admin: mou22@gmail.com, Password: 1234Aa@
+# User: mou27@gmail.com, Password: 1234Aa@
 
 
 # Live Link

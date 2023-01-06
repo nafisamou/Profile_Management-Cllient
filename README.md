@@ -19,8 +19,7 @@
 * Daisy UI -> [Daisy UI](https://daisyui.com/)
 
 
-# Hosting : 
-* Firebase -> [Hosting](https://used-products-resale-870c2.web.app)
+
 
 # Other Resources -->
 
